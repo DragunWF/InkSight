@@ -32,6 +32,7 @@ InkSight is a mobile application that uses AI to generate insights based on phys
 
 - **React Native** – Cross-platform mobile app development.
 - **Expo** – Development and build tooling.
+- **TypeScript** - Superset of JavaScript that adds static typing for better code quality.
 - **SQLite** – Local storage for journal entries.
 - **Gemini API** – Text polishing and insight generation.
 - **OCR Library** – For recognizing text from physical journal images.
