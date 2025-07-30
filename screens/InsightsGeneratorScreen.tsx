@@ -1,12 +1,22 @@
 import { StyleSheet, View, Text } from "react-native";
+import type { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
 
 import Title from "../components/ui/Title";
 import PressableCard from "../components/ui/PressableCard";
+import { screenNames } from "../constants/navigation";
 
-function InsightsGeneratorScreen() {
-  async function takePhotoHandler() {}
+interface InsightsGeneratorScreenProps {
+  navigation: BottomTabNavigationProp<any>;
+}
 
-  async function pasteTextHandler() {}
+function InsightsGeneratorScreen({ navigation }: InsightsGeneratorScreenProps) {
+  function takePhotoHandler() {
+    navigation.navigate(screenNames.takePhotoScreen);
+  }
+
+  function pasteTextHandler() {
+    navigation.navigate(screenNames.pasteJournalScreen);
+  }
 
   return (
     <View style={styles.rootContainer}>

@@ -49,7 +49,7 @@ function PressableCard({
 
 const styles = StyleSheet.create({
   pressed: {
-    opacity: 0.85,
+    opacity: 0.75,
   },
   card: {
     alignItems: "center",

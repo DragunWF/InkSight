@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import JournalEntriesScreen from "../../screens/JournalEntriesScreen";
 import ChatScreen from "../../screens/ChatScreen";
-import InsightsGeneratorScreen from "../../screens/InsightsGeneratorScreen";
+import InsightsNavigator from "./InsightsNavigator";
 import { navigatorNames, screenNames } from "../../constants/navigation";
 import { FontAwesome, FontAwesome6, Entypo } from "@expo/vector-icons";
 
@@ -10,7 +10,10 @@ const BottomTab = createBottomTabNavigator();
 
 function AppNavigator() {
   return (
-    <BottomTab.Navigator id={navigatorNames.appNavigator as any}>
+    <BottomTab.Navigator
+      id={navigatorNames.appNavigator as any}
+      initialRouteName={navigatorNames.insightsNavigator}
+    >
       <BottomTab.Screen
         name={screenNames.journalEntries}
         component={JournalEntriesScreen}
@@ -23,10 +26,10 @@ function AppNavigator() {
         }}
       />
       <BottomTab.Screen
-        name={screenNames.insightsGenerator}
-        component={InsightsGeneratorScreen}
+        name={navigatorNames.insightsNavigator}
+        component={InsightsNavigator}
         options={{
-          headerTitle: "Insights Generator",
+          headerShown: false,
           tabBarLabel: "Insights",
           tabBarIcon: ({ color, size }) => (
             <FontAwesome6 name="brain" size={size} color={color} />
