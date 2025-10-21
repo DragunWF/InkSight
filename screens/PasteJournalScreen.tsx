@@ -8,17 +8,23 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from "react-native";
+import type { StackNavigationProp } from "@react-navigation/stack";
 import { Ionicons } from "@expo/vector-icons";
 
 import Button from "../components/ui/Button";
 import ConfirmationDialog from "../components/ui/ConfirmationDialog";
 import { mainColors } from "../constants/colors";
+import { screenNames } from "../constants/navigation";
+
+interface PasteJournalScreenProps {
+  navigation: StackNavigationProp<any>;
+}
 
 /**
  * Screen for pasting and submitting digital journal entries
  * Supports markdown formatting and includes confirmation before processing
  */
-function PasteJournalScreen() {
+function PasteJournalScreen({ navigation }: PasteJournalScreenProps) {
   const [journalText, setJournalText] = useState("");
   const [showConfirmation, setShowConfirmation] = useState(false);
 
@@ -34,9 +40,8 @@ function PasteJournalScreen() {
 
   const handleConfirm = () => {
     setShowConfirmation(false);
-    // TODO: Process the journal entry with AI
-    // Navigate to insights screen or processing screen
-    console.log("Processing journal entry:", journalText);
+    // Navigate to insights screen with journal text
+    navigation.navigate(screenNames.insightsScreen, { journalText });
   };
 
   const handleCancel = () => {

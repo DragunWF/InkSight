@@ -4,6 +4,7 @@ import InsightsGeneratorScreen from "../../screens/InsightsGeneratorScreen";
 import PasteJournalScreen from "../../screens/PasteJournalScreen";
 import TakePhotoScreen from "../../screens/TakePhotoScreen";
 import { screenNames, navigatorNames } from "../../constants/navigation";
+import InsightsScreen from "../../screens/InsightsScreen";
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,13 @@ function InsightsNavigator() {
         component={PasteJournalScreen}
         options={{
           headerTitle: "Paste Journal Text",
+        }}
+      />
+      <Stack.Screen
+        name={screenNames.insightsScreen}
+        component={InsightsScreen}
+        options={{
+          headerTitle: "Insights",
         }}
       />
     </Stack.Navigator>

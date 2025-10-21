@@ -6,3 +6,5 @@ export { default as ConfirmationDialog } from "./ConfirmationDialog";
 export { default as ImagePlaceholder } from "./ImagePlaceholder";
 export { default as PressableCard } from "./PressableCard";
 export { default as Title } from "./Title";
+export { default as LoadingSpinner } from "./LoadingSpinner";
+export { default as ErrorDisplay } from "./ErrorDisplay";

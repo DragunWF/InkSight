@@ -4,9 +4,13 @@ export const navigatorNames = {
 };
 
 export const screenNames = {
+  // App Bottom Tab Navigator
   journalEntries: "JournalEntries",
   chat: "Chat",
   insightsGenerator: "InsightsGenerator",
   takePhotoScreen: "TakePhotoScreen",
   pasteJournalScreen: "PasteJournalScreen",
+
+  // Insights Stack Navigator
+  insightsScreen: "InsightsScreen",
 };
