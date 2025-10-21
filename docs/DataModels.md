@@ -5,4 +5,5 @@
 - ID
 - Content
 - Image _(Optional)_
+- AI Insights
 - Date Saved
