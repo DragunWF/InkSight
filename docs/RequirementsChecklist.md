@@ -4,7 +4,7 @@
 
 - [x] Digital journal insight generation
 - [x] Physical journal insight generation
-- [ ] Reflection chatbot functionality
+- [x] Reflection chatbot functionality
 - [x] Viewing of past journal entries
 
 ## User Interface Design
@@ -15,21 +15,15 @@
 - [x] Insights Result Screen
 - [x] Journal Screen
   - [x] View Journal Modal
-- [ ] Chat Screen
+- [x] Chat Screen
 
 ## AI Algorithms
 
 - [x] Insight Generation
 - [x] OCR Text Correction Processing
-- [ ] Reflection Chatbot Algorithm
+- [x] Reflection Chatbot Algorithm
 
 ## Database
 
 - [x] SQLite Core Storage Functions
 - [x] SQLite Journal Storage Functions
-
----
-
-## Note
-
-Currently considering locking the chat screen from getting accessed on the bottom tab navigation menu. It should only be accessible from viewing an individual journal entry and be able to start a reflection chatbot session there.
