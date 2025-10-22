@@ -1,3 +1,50 @@
 import * as SQLite from "expo-sqlite";
 
-// TODO: Implement for future use
+/**
+ * Core database instance for InkSight app
+ * Initialized lazily when initDatabase() is called
+ */
+let db: SQLite.SQLiteDatabase | null = null;
+
+/**
+ * Initializes the database and schema
+ * Opens the SQLite database and creates tables if they don't exist
+ * MUST be called before any database operations
+ */
+export async function initDatabase() {
+  try {
+    // Open database if not already opened
+    if (!db) {
+      db = await SQLite.openDatabaseAsync("inksight.db");
+      console.log("✅ Database opened successfully");
+    }
+
+    // Create tables
+    await db.execAsync(`
+      CREATE TABLE IF NOT EXISTS journal_entries (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        content TEXT NOT NULL,
+        image_uri TEXT,
+        ai_insights TEXT NOT NULL,
+        date_saved INTEGER NOT NULL
+      );
+    `);
+    console.log("✅ Database schema initialized successfully");
+  } catch (error) {
+    console.error("❌ Error initializing database:", error);
+    throw error;
+  }
+}
+
+/**
+ * Returns the database instance for direct queries
+ * Throws an error if database hasn't been initialized
+ */
+export function getDatabase(): SQLite.SQLiteDatabase {
+  if (!db) {
+    throw new Error("Database not initialized. Call initDatabase() first.");
+  }
+  return db;
+}
+
+export default getDatabase;
