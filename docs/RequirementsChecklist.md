@@ -3,7 +3,7 @@
 ## Overall Functionality
 
 - [x] Digital journal insight generation
-- [ ] Physical journal insight generation
+- [x] Physical journal insight generation
 - [ ] Reflection chatbot functionality
 - [ ] Viewing of past journal entries
 
@@ -19,8 +19,8 @@
 
 ## AI Algorithms
 
-- [ ] Insight Generation
-- [ ] OCR Text Correction Processing
+- [x] Insight Generation
+- [x] OCR Text Correction Processing
 - [ ] Reflection Chatbot Algorithm
 
 ## Database
