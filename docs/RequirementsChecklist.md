@@ -5,7 +5,7 @@
 - [x] Digital journal insight generation
 - [x] Physical journal insight generation
 - [ ] Reflection chatbot functionality
-- [ ] Viewing of past journal entries
+- [x] Viewing of past journal entries
 
 ## User Interface Design
 
@@ -13,8 +13,8 @@
 - [x] Paste Digital Journal Entry Screen
 - [x] Scan Physical Journal Screen
 - [x] Insights Result Screen
-- [ ] Journal Screen
-  - [ ] View Journal Modal
+- [x] Journal Screen
+  - [x] View Journal Modal
 - [ ] Chat Screen
 
 ## AI Algorithms
@@ -25,8 +25,8 @@
 
 ## Database
 
-- [ ] SQLite Core Storage Functions
-- [ ] SQLite Journal Storage Functions
+- [x] SQLite Core Storage Functions
+- [x] SQLite Journal Storage Functions
 
 ---
 
