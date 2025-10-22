@@ -17,4 +17,7 @@ export const screenNames = {
 
   // Journal Entry Detail Screen
   journalScreen: "JournalScreen",
+
+  // Reflection Chat Screen
+  chatScreen: "ChatScreen",
 };

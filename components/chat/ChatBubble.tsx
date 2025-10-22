@@ -59,14 +59,26 @@ function ChatBubble({
 
   return (
     <Container {...rest} hitSlop={hitSlop} onPress={onPress}>
-      <View style={bubbleStyle}>{children}</View>
+      <View
+        style={bubbleStyle}
+        onLayout={(event) => {
+          const { height, width } = event.nativeEvent.layout;
+          console.log(
+            `💬 ChatBubble (${
+              isOwnMessage ? "User" : "AI"
+            }) layout: ${width}x${height}`
+          );
+          console.log(`💬 Bubble style:`, bubbleStyle);
+        }}
+      >
+        {children}
+      </View>
       {withTail && (
         <View style={[styles.svgContainer, SvgContainerStyle]}>
           <Svg
             width={moderateScale(15.5, 0.6)}
             height={moderateScale(17.5, 0.6)}
             viewBox="32.485 17.5 15.515 17.5"
-            enableBackground="new 32.485 17.5 15.515 17.5"
           >
             <Path d={tailPath} fill={tailColor} x="0" y="0" />
           </Svg>

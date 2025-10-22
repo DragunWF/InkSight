@@ -3,11 +3,16 @@ import { createStackNavigator } from "@react-navigation/stack";
 import InsightsGeneratorScreen from "../../screens/InsightsGeneratorScreen";
 import PasteJournalScreen from "../../screens/PasteJournalScreen";
 import TakePhotoScreen from "../../screens/TakePhotoScreen";
-import { screenNames, navigatorNames } from "../../constants/navigation";
 import InsightsScreen from "../../screens/InsightsScreen";
+import ChatScreen from "../../screens/ChatScreen";
+import { screenNames, navigatorNames } from "../../constants/navigation";
 
 const Stack = createStackNavigator();
 
+/**
+ * Stack navigator for insights generation flow
+ * Handles the complete workflow: select input method → process → view insights → chat
+ */
 function InsightsNavigator() {
   return (
     <Stack.Navigator id={navigatorNames.insightsNavigator as any}>
@@ -37,6 +42,14 @@ function InsightsNavigator() {
         component={InsightsScreen}
         options={{
           headerTitle: "Insights",
+        }}
+      />
+      <Stack.Screen
+        name={screenNames.chatScreen}
+        component={ChatScreen}
+        options={{
+          headerTitle: "Reflection Chat",
+          headerBackTitle: "Back",
         }}
       />
     </Stack.Navigator>

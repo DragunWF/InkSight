@@ -115,15 +115,16 @@ function JournalScreen({ route, navigation }: JournalScreenProps) {
   };
 
   /**
-   * Navigates to the reflection chat screen
+   * Navigates to the reflection chat screen with journal entry context
    */
   const handleStartReflection = () => {
-    // TODO: Navigate to reflection chat screen with entry context
-    Alert.alert(
-      "Coming Soon",
-      "The reflection chat feature will allow you to discuss this journal entry in depth with an AI companion.",
-      [{ text: "OK" }]
-    );
+    if (!entry) return;
+
+    navigation.navigate(screenNames.chatScreen, {
+      journalEntry: entry.content,
+      insights: entry.ai_insights,
+      entryId: entry.id,
+    });
   };
 
   // Loading state

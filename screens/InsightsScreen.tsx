@@ -16,6 +16,7 @@ import LoadingSpinner from "../components/ui/LoadingSpinner";
 import ErrorDisplay from "../components/ui/ErrorDisplay";
 import ConfirmationDialog from "../components/ui/ConfirmationDialog";
 import { mainColors } from "../constants/colors";
+import { screenNames } from "../constants/navigation";
 import {
   generateInsights,
   correctOcrText,
@@ -140,12 +141,12 @@ function InsightsScreen({ route, navigation }) {
    * Handles navigation to the reflection chat screen
    */
   const handleStartReflection = () => {
-    // TODO: Navigate to reflection chat screen
-    Alert.alert(
-      "Coming Soon",
-      "The reflection chat feature will allow you to discuss your journal entry in depth with an AI companion.",
-      [{ text: "OK" }]
-    );
+    if (!processedText || !insights) return;
+
+    navigation.navigate(screenNames.chatScreen, {
+      journalEntry: processedText,
+      insights: insights,
+    });
   };
 
   /**
