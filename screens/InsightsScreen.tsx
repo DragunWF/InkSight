@@ -15,37 +15,103 @@ import LoadingSpinner from "../components/ui/LoadingSpinner";
 import ErrorDisplay from "../components/ui/ErrorDisplay";
 import ConfirmationDialog from "../components/ui/ConfirmationDialog";
 import { mainColors } from "../constants/colors";
-import { generateInsights } from "../helpers/ai/insightsGenerator";
+import {
+  generateInsights,
+  correctOcrText,
+} from "../helpers/ai/insightsGenerator";
+import { performOCR } from "../services/ocr";
+
+interface InsightsScreenParams {
+  journalText?: string;
+  imageUri?: string;
+  isOcrMode?: boolean;
+}
 
 /**
  * Screen that displays AI-generated insights from a journal entry.
+ * Supports two modes:
+ * 1. Direct text input (journalText parameter)
+ * 2. OCR mode (imageUri + isOcrMode parameters) - processes scanned images
+ *
  * Shows structured feedback including writing analysis, emotional tone,
  * key themes, reflections, and growth questions.
  */
 function InsightsScreen({ route, navigation }) {
-  const { journalText } = route.params || {};
+  const params = (route.params as InsightsScreenParams) || {};
+  const { journalText, imageUri, isOcrMode } = params;
+
+  const [processedText, setProcessedText] = useState<string>("");
   const [insights, setInsights] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadingMessage, setLoadingMessage] = useState("Initializing...");
   const [error, setError] = useState<string | null>(null);
   const [showSaveDialog, setShowSaveDialog] = useState(false);
 
   useEffect(() => {
-    if (journalText) {
-      fetchInsights();
+    if (isOcrMode && imageUri) {
+      processOcrImage();
+    } else if (journalText) {
+      setProcessedText(journalText);
+      fetchInsights(journalText);
     } else {
-      setError("No journal text provided");
+      setError("No journal text or image provided");
       setLoading(false);
     }
-  }, [journalText]);
+  }, [journalText, imageUri, isOcrMode]);
 
   /**
-   * Fetches AI-generated insights for the journal entry
+   * Complete OCR workflow: Image → OCR Extraction → Text Correction → Insights
+   * This is the main processing pipeline for scanned journal entries
    */
-  const fetchInsights = async () => {
+  const processOcrImage = async () => {
     try {
       setLoading(true);
       setError(null);
-      const generatedInsights = await generateInsights(journalText);
+
+      // Step 1: Extract text from image using OCR
+      setLoadingMessage("Scanning your journal entry...");
+
+      // Pass the image URI directly - API expects the raw image data
+      const rawOcrText = await performOCR(imageUri!);
+
+      if (!rawOcrText || rawOcrText.trim().length === 0) {
+        throw new Error(
+          "No text detected in the image. Please try a clearer photo."
+        );
+      }
+
+      console.log("Raw OCR text:", rawOcrText);
+
+      // Step 2: Correct OCR errors using AI
+      setLoadingMessage("Correcting any recognition errors...");
+      const correctedText = await correctOcrText(rawOcrText);
+      console.log("Corrected text:", correctedText);
+      setProcessedText(correctedText);
+
+      // Step 3: Generate insights from corrected text
+      setLoadingMessage("Generating your personalized insights...");
+      const generatedInsights = await generateInsights(correctedText);
+      setInsights(generatedInsights);
+    } catch (err: any) {
+      console.error("Error processing OCR image:", err);
+      setError(
+        err.message ||
+          "Failed to process your journal image. Please try again with a clearer photo."
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  /**
+   * Fetches AI-generated insights for the journal entry (direct text mode)
+   */
+  const fetchInsights = async (text: string) => {
+    try {
+      setLoading(true);
+      setError(null);
+      setLoadingMessage("Generating your personalized insights...");
+      const generatedInsights = await generateInsights(text);
       setInsights(generatedInsights);
     } catch (err) {
       console.error("Error generating insights:", err);
@@ -54,6 +120,17 @@ function InsightsScreen({ route, navigation }) {
       );
     } finally {
       setLoading(false);
+    }
+  };
+
+  /**
+   * Retries the entire processing workflow based on the mode
+   */
+  const handleRetry = () => {
+    if (isOcrMode && imageUri) {
+      processOcrImage();
+    } else if (journalText) {
+      fetchInsights(journalText);
     }
   };
 
@@ -100,7 +177,7 @@ function InsightsScreen({ route, navigation }) {
   if (loading) {
     return (
       <View style={styles.container}>
-        <LoadingSpinner message="Generating your personalized insights..." />
+        <LoadingSpinner message={loadingMessage} />
       </View>
     );
   }
@@ -109,7 +186,7 @@ function InsightsScreen({ route, navigation }) {
   if (error) {
     return (
       <View style={styles.container}>
-        <ErrorDisplay message={error} onRetry={fetchInsights} />
+        <ErrorDisplay message={error} onRetry={handleRetry} />
       </View>
     );
   }
@@ -135,14 +212,16 @@ function InsightsScreen({ route, navigation }) {
         <View style={styles.entryPreviewContainer}>
           <View style={styles.entryPreviewHeader}>
             <Ionicons
-              name="document-text-outline"
+              name={isOcrMode ? "image-outline" : "document-text-outline"}
               size={18}
               color={mainColors.textSecondary}
             />
-            <Text style={styles.entryPreviewTitle}>Your Entry</Text>
+            <Text style={styles.entryPreviewTitle}>
+              {isOcrMode ? "Extracted Text" : "Your Entry"}
+            </Text>
           </View>
           <Text style={styles.entryPreviewText} numberOfLines={3}>
-            {journalText}
+            {processedText}
           </Text>
         </View>
 
