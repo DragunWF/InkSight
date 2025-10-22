@@ -6,6 +6,7 @@ import {
   ScrollView,
   Alert,
   Platform,
+  SafeAreaView,
 } from "react-native";
 import Markdown from "react-native-markdown-display";
 import { Ionicons } from "@expo/vector-icons";
@@ -20,6 +21,7 @@ import {
   correctOcrText,
 } from "../helpers/ai/insightsGenerator";
 import { performOCR } from "../services/ocr";
+import { createJournalEntry } from "../helpers/storage/journalStorage";
 
 interface InsightsScreenParams {
   journalText?: string;
@@ -156,14 +158,32 @@ function InsightsScreen({ route, navigation }) {
   /**
    * Confirms and saves the journal entry to local storage
    */
-  const confirmSaveEntry = () => {
+  const confirmSaveEntry = async () => {
     setShowSaveDialog(false);
-    // TODO: Implement SQLite storage for journal entries
-    Alert.alert(
-      "Entry Saved",
-      "Your journal entry and insights have been saved successfully!",
-      [{ text: "OK" }]
-    );
+
+    try {
+      // Save to SQLite database
+      const entryId = await createJournalEntry({
+        content: processedText,
+        image_uri: isOcrMode ? imageUri : null,
+        ai_insights: insights || "",
+      });
+
+      Alert.alert(
+        "Entry Saved",
+        "Your journal entry and insights have been saved successfully!",
+        [{ text: "OK" }]
+      );
+
+      console.log("Journal entry saved with ID:", entryId);
+    } catch (error) {
+      console.error("Error saving journal entry:", error);
+      Alert.alert(
+        "Save Failed",
+        "Failed to save your journal entry. Please try again.",
+        [{ text: "OK" }]
+      );
+    }
   };
 
   /**

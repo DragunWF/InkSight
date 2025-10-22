@@ -1,6 +1,7 @@
 export const navigatorNames = {
   appNavigator: "AppNavigator",
   insightsNavigator: "InsightsNavigator",
+  journalNavigator: "JournalNavigator",
 };
 
 export const screenNames = {
@@ -13,4 +14,7 @@ export const screenNames = {
 
   // Insights Stack Navigator
   insightsScreen: "InsightsScreen",
+
+  // Journal Entry Detail Screen
+  journalScreen: "JournalScreen",
 };

@@ -1,10 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-import JournalEntriesScreen from "../../screens/JournalEntriesScreen";
-import ChatScreen from "../../screens/ChatScreen";
+import JournalNavigator from "./JournalNavigator";
 import InsightsNavigator from "./InsightsNavigator";
-import { navigatorNames, screenNames } from "../../constants/navigation";
-import { FontAwesome, FontAwesome6, Entypo } from "@expo/vector-icons";
+import { navigatorNames } from "../../constants/navigation";
+import { FontAwesome, FontAwesome6 } from "@expo/vector-icons";
 import { mainColors } from "../../constants/colors";
 
 const BottomTab = createBottomTabNavigator();
@@ -48,10 +47,10 @@ function AppNavigator() {
       }}
     >
       <BottomTab.Screen
-        name={screenNames.journalEntries}
-        component={JournalEntriesScreen}
+        name={navigatorNames.journalNavigator}
+        component={JournalNavigator}
         options={{
-          headerTitle: "My Journal",
+          headerShown: false,
           tabBarLabel: "Journal",
           tabBarIcon: ({ color, size }) => (
             <FontAwesome name="book" size={size} color={color} />
@@ -66,17 +65,6 @@ function AppNavigator() {
           tabBarLabel: "Insights",
           tabBarIcon: ({ color, size }) => (
             <FontAwesome6 name="brain" size={size} color={color} />
-          ),
-        }}
-      />
-      <BottomTab.Screen
-        name={screenNames.chat}
-        component={ChatScreen}
-        options={{
-          headerTitle: "Reflective Chat",
-          tabBarLabel: "Chat",
-          tabBarIcon: ({ color, size }) => (
-            <Entypo name="chat" size={size} color={color} />
           ),
         }}
       />
