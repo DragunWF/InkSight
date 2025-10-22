@@ -77,6 +77,31 @@ function PasteJournalScreen({ navigation }: PasteJournalScreenProps) {
           </Text>
         </View>
 
+        {/* Primary Action Button - Always Visible */}
+        <View style={styles.topActionContainer}>
+          <Button
+            onPress={handleSubmit}
+            icon="sparkles"
+            variant="primary"
+            fullWidth
+            disabled={journalText.trim().length === 0}
+          >
+            {journalText.trim().length === 0
+              ? "Paste Text to Generate Insights"
+              : `Generate Insights (${wordCount} words)`}
+          </Button>
+          {journalText.length > 0 && (
+            <Button
+              onPress={handleClear}
+              icon="trash"
+              variant="outline"
+              fullWidth
+            >
+              Clear Text
+            </Button>
+          )}
+        </View>
+
         {/* Text Input Area */}
         <View style={styles.inputContainer}>
           <TextInput
@@ -104,29 +129,6 @@ function PasteJournalScreen({ navigation }: PasteJournalScreenProps) {
               <Text style={styles.statText}>{charCount} characters</Text>
             </View>
           </View>
-        </View>
-
-        {/* Action Buttons */}
-        <View style={styles.actionContainer}>
-          <Button
-            onPress={handleSubmit}
-            icon="sparkles"
-            variant="primary"
-            fullWidth
-            disabled={journalText.trim().length === 0}
-          >
-            Generate Insights
-          </Button>
-          {journalText.length > 0 && (
-            <Button
-              onPress={handleClear}
-              icon="trash"
-              variant="outline"
-              fullWidth
-            >
-              Clear Text
-            </Button>
-          )}
         </View>
 
         {/* Markdown Guide */}
@@ -236,7 +238,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
     color: mainColors.textMuted,
   },
-  actionContainer: {
+  topActionContainer: {
     gap: 12,
     marginBottom: 20,
   },
