@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import JournalNavigator from "./JournalNavigator";
 import InsightsNavigator from "./InsightsNavigator";
+import SettingsScreen from "../../screens/SettingsScreen";
 import { navigatorNames } from "../../constants/navigation";
 import { FontAwesome, FontAwesome6 } from "@expo/vector-icons";
 import { mainColors } from "../../constants/colors";
@@ -65,6 +66,17 @@ function AppNavigator() {
           tabBarLabel: "Insights",
           tabBarIcon: ({ color, size }) => (
             <FontAwesome6 name="brain" size={size} color={color} />
+          ),
+        }}
+      />
+      <BottomTab.Screen
+        name="SettingsScreen"
+        component={SettingsScreen}
+        options={{
+          headerShown: false,
+          tabBarLabel: "Settings",
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome name="cog" size={size} color={color} />
           ),
         }}
       />

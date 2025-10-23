@@ -7,13 +7,14 @@ export const navigatorNames = {
 export const screenNames = {
   // App Bottom Tab Navigator
   journalEntries: "JournalEntries",
-  chat: "Chat",
   insightsGenerator: "InsightsGenerator",
-  takePhotoScreen: "TakePhotoScreen",
-  pasteJournalScreen: "PasteJournalScreen",
+  settingsScreen: "SettingsScreen",
 
   // Insights Stack Navigator
+  takePhotoScreen: "TakePhotoScreen",
+  pasteJournalScreen: "PasteJournalScreen",
   insightsScreen: "InsightsScreen",
+  chat: "Chat",
 
   // Journal Entry Detail Screen
   journalScreen: "JournalScreen",
