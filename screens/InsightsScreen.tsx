@@ -49,6 +49,7 @@ function InsightsScreen({ route, navigation }) {
   const [loadingMessage, setLoadingMessage] = useState("Initializing...");
   const [error, setError] = useState<string | null>(null);
   const [showSaveDialog, setShowSaveDialog] = useState(false);
+  const [isJournalEntrySaved, setIsJournalEntrySaved] = useState(false);
 
   useEffect(() => {
     if (isOcrMode && imageUri) {
@@ -177,6 +178,7 @@ function InsightsScreen({ route, navigation }) {
       );
 
       console.log("Journal entry saved with ID:", entryId);
+      setIsJournalEntrySaved(true);
     } catch (error) {
       console.error("Error saving journal entry:", error);
       Alert.alert(
@@ -271,9 +273,10 @@ function InsightsScreen({ route, navigation }) {
             onPress={handleSaveEntry}
             icon="save"
             variant="outline"
+            disabled={isJournalEntrySaved}
             fullWidth
           >
-            Save to Journal
+            {isJournalEntrySaved ? "Journal Entry Saved" : "Save to Journal"}
           </Button>
         </View>
 

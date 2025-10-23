@@ -35,6 +35,7 @@ function InsightsNavigator() {
         component={PasteJournalScreen}
         options={{
           headerTitle: "Paste Journal Text",
+          headerBackTitle: "Back",
         }}
       />
       <Stack.Screen
