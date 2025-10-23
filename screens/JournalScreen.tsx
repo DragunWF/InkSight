@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   StyleSheet,
   View,
@@ -6,7 +6,7 @@ import {
   ScrollView,
   Image,
   Alert,
-  Platform,
+  TouchableOpacity,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Markdown from "react-native-markdown-display";
@@ -37,12 +37,15 @@ interface JournalScreenProps {
  * Screen for viewing a single journal entry in detail
  * Displays all fields: content, image (if available), AI insights, and date
  * Provides options to delete entry or start reflection chat
+ * Buttons are placed at the top for easy access, with scroll-to-top button at bottom
  */
 function JournalScreen({ route, navigation }: JournalScreenProps) {
   const { entryId } = route.params;
   const [entry, setEntry] = useState<JournalEntry | null>(null);
   const [loading, setLoading] = useState(true);
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+
+  const scrollViewRef = useRef<ScrollView>(null);
 
   useEffect(() => {
     loadEntry();
@@ -127,6 +130,13 @@ function JournalScreen({ route, navigation }: JournalScreenProps) {
     });
   };
 
+  /**
+   * Scrolls to the top of the screen
+   */
+  const scrollToTop = () => {
+    scrollViewRef.current?.scrollTo({ y: 0, animated: true });
+  };
+
   // Loading state
   if (loading) {
     return (
@@ -164,6 +174,7 @@ function JournalScreen({ route, navigation }: JournalScreenProps) {
   return (
     <View style={styles.container}>
       <ScrollView
+        ref={scrollViewRef}
         style={styles.scrollContainer}
         contentContainerStyle={styles.contentContainer}
       >
@@ -174,6 +185,26 @@ function JournalScreen({ route, navigation }: JournalScreenProps) {
             <Text style={styles.dateText}>{formattedDate}</Text>
             <Text style={styles.timeText}>{formattedTime}</Text>
           </View>
+        </View>
+
+        {/* Action Buttons - Moved to Top */}
+        <View style={styles.topActionsContainer}>
+          <Button
+            onPress={handleStartReflection}
+            icon="chatbubbles"
+            variant="primary"
+            fullWidth
+          >
+            Start Reflection Chat
+          </Button>
+          <Button
+            onPress={handleDeletePress}
+            icon="trash"
+            variant="outline"
+            fullWidth
+          >
+            Delete Entry
+          </Button>
         </View>
 
         {/* Image (if available) */}
@@ -212,25 +243,18 @@ function JournalScreen({ route, navigation }: JournalScreenProps) {
           </View>
         </View>
 
-        {/* Action Buttons */}
-        <View style={styles.actionsContainer}>
-          <Button
-            onPress={handleStartReflection}
-            icon="chatbubbles"
-            variant="primary"
-            fullWidth
-          >
-            Start Reflection Chat
-          </Button>
-          <Button
-            onPress={handleDeletePress}
-            icon="trash"
-            variant="outline"
-            fullWidth
-          >
-            Delete Entry
-          </Button>
-        </View>
+        {/* Scroll to Top Button - Bottom */}
+        <TouchableOpacity
+          style={styles.scrollToTopButton}
+          onPress={scrollToTop}
+        >
+          <Ionicons
+            name="arrow-up-circle"
+            size={24}
+            color={mainColors.primary500}
+          />
+          <Text style={styles.scrollToTopText}>Back to Top</Text>
+        </TouchableOpacity>
       </ScrollView>
 
       {/* Delete Confirmation Dialog */}
@@ -322,9 +346,30 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: mainColors.borderLight,
   },
+  topActionsContainer: {
+    gap: 12,
+    marginBottom: 24,
+  },
   actionsContainer: {
     gap: 12,
     marginTop: 8,
+  },
+  scrollToTopButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    paddingVertical: 16,
+    marginTop: 24,
+    backgroundColor: mainColors.backgroundAlt,
+    borderRadius: 12,
+    borderWidth: 2,
+    borderColor: mainColors.primary500,
+    gap: 8,
+  },
+  scrollToTopText: {
+    fontSize: 16,
+    fontWeight: "600",
+    color: mainColors.primary500,
   },
 });
 
