@@ -6,7 +6,7 @@
 - [x] Physical journal insight generation
 - [x] Reflection chatbot functionality
 - [x] Viewing of past journal entries
-- [ ] Saving of current journal entries to the file system
+- [x] Saving of current journal entries to the file system
 
 ## User Interface Design
 
@@ -17,7 +17,7 @@
 - [x] Journal Screen
   - [x] View Journal Modal
 - [x] Chat Screen
-- [ ] Settings Screen
+- [x] Settings Screen
 
 ## AI Algorithms
 
