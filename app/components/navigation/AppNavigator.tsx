@@ -25,9 +25,9 @@ function AppNavigator() {
           backgroundColor: mainColors.backgroundAlt,
           borderTopWidth: 1,
           borderTopColor: mainColors.borderLight,
-          paddingBottom: 5,
-          paddingTop: 5,
-          height: 60,
+          paddingBottom: 20,
+          paddingTop: 8,
+          height: 80,
         },
         tabBarLabelStyle: {
           fontSize: 12,
