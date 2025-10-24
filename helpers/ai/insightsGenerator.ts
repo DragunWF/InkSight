@@ -40,7 +40,8 @@ export async function generateInsights(text: string): Promise<string> {
  */
 export async function correctOcrText(ocrText: string): Promise<string> {
   const prompt = formatOcrTextPrompt(ocrText);
-  return await generateText(prompt);
+  const aiCorrectedOcrText = await generateText(prompt);
+  return aiCorrectedOcrText.replace("\n", " ");
 }
 
 /**
