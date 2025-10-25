@@ -40,18 +40,17 @@ export default function Footer() {
               >
                 GitHub
               </a>
-              <a href="#about" className={styles.link}>
-                About
-              </a>
             </div>
 
             <div className={styles.linkColumn}>
               <h4 className={styles.columnTitle}>Connect</h4>
               <a
-                href={`mailto:${LANDING_CONFIG.contact.email}`}
+                href={`https://www.linkedin.com/in/${LANDING_CONFIG.contact.linkedin}/`}
                 className={styles.link}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Email
+                LinkedIn
               </a>
               <a
                 href={LANDING_CONFIG.links.github}
@@ -67,7 +66,7 @@ export default function Footer() {
 
         <div className={styles.bottom}>
           <p className={styles.copyright}>
-            © {currentYear} {LANDING_CONFIG.contact.name}. Made with ❤️ for
+            © {currentYear} {LANDING_CONFIG.contact.name}. Made with 🌟 for
             personal growth.
           </p>
           <p className={styles.disclaimer}>

@@ -8,7 +8,7 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -24,60 +24,49 @@
   font-size: 1.25rem;
   text-align: center;
   color: var(--text-secondary);
-  margin: 0 0 4rem 0;
+  margin: 0 0 3rem 0;
 }
 
-.content {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+/* Main QR Card */
+.mainCard {
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 24px;
+  padding: 3rem;
+  text-align: center;
+  transition: all 0.3s ease;
   margin-bottom: 3rem;
 }
 
-.qrSection,
-.downloadSection {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.qrCard,
-.optionCard {
-  background: white;
-  border: 2px solid #e5e7eb;
-  border-radius: 20px;
-  padding: 2.5rem;
-  transition: all 0.3s ease;
-  height: 100%;
-}
-
-.qrCard:hover,
-.optionCard:hover {
+.mainCard:hover {
   border-color: var(--primary-color);
-  box-shadow: 0 12px 30px rgba(90, 79, 207, 0.15);
+  box-shadow: 0 20px 60px rgba(90, 79, 207, 0.15);
 }
 
-.cardTitle {
-  font-size: 1.5rem;
+.qrWrapper {
+  display: inline-block;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  border-radius: 20px;
+  margin-bottom: 2rem;
+  box-shadow: 0 8px 24px rgba(90, 79, 207, 0.1);
+}
+
+.scanTitle {
+  font-size: 1.75rem;
   font-weight: 600;
   color: var(--text-primary);
   margin: 0 0 1rem 0;
 }
 
-.cardDescription {
-  font-size: 1rem;
+.scanDescription {
+  font-size: 1.1rem;
   color: var(--text-secondary);
   line-height: 1.6;
   margin: 0 0 2rem 0;
-}
-
-.qrWrapper {
-  display: flex;
-  justify-content: center;
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background: #f8f9fa;
-  border-radius: 16px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .urlBox {
@@ -85,9 +74,10 @@
   align-items: center;
   gap: 0.75rem;
   background: #f8f9fa;
-  padding: 1rem;
+  padding: 1rem 1.25rem;
   border-radius: 12px;
-  margin-top: 1.5rem;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 .url {
@@ -98,6 +88,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: left;
 }
 
 .copyButton {
@@ -115,60 +106,137 @@
 
 .copyButton:hover {
   background: #4a3fb0;
-  transform: scale(1.05);
 }
 
-.downloadButton {
-  display: block;
-  width: 100%;
-  padding: 1rem 2rem;
+/* Steps Section */
+.stepsContainer {
+  margin-bottom: 3rem;
+}
+
+.stepsTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-primary);
+  margin: 0 0 2rem 0;
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.step {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.step:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 12px 30px rgba(90, 79, 207, 0.15);
+}
+
+.stepNumber {
+  width: 48px;
+  height: 48px;
   background: linear-gradient(135deg, #8b5cf6 0%, #5a4fcf 100%);
   color: white;
-  text-align: center;
-  text-decoration: none;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(90, 79, 207, 0.3);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 auto 1rem;
+  box-shadow: 0 4px 12px rgba(90, 79, 207, 0.3);
 }
 
-.downloadButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(90, 79, 207, 0.4);
+.stepTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.5rem 0;
+}
+
+.stepDescription {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Download Expo Section */
+.downloadExpo {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.downloadTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 1.5rem 0;
 }
 
 .storeButtons {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
+  justify-content: center;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .storeButton {
   flex: 1;
-  padding: 1rem;
+  padding: 1.25rem 2rem;
   background: white;
-  color: #5a4fcf;
-  border: 2px solid #5a4fcf;
-  text-align: center;
+  border: 2px solid var(--primary-color);
+  border-radius: 14px;
   text-decoration: none;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 600;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
+  gap: 1rem;
+  box-shadow: 0 4px 12px rgba(90, 79, 207, 0.1);
 }
 
 .storeButton:hover {
-  background: #f8f9fa;
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  box-shadow: 0 8px 24px rgba(90, 79, 207, 0.2);
 }
 
+.storeIcon {
+  font-size: 2.5rem;
+}
+
+.storeText {
+  text-align: left;
+  flex: 1;
+}
+
+.storeLabel {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.storeName {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+/* Notice */
 .notice {
-  background: linear-gradient(135deg, #fff3e0 0%, #ffe6cc 100%);
-  border: 2px solid #ffb74d;
+  background: linear-gradient(135deg, #f0f4ff 0%, #e8f0ff 100%);
+  border: 2px solid #c7d7fe;
   border-radius: 16px;
   padding: 1.5rem;
   text-align: center;
@@ -177,18 +245,18 @@
 .noticeText {
   margin: 0;
   font-size: 1rem;
-  color: #e65100;
+  color: #4338ca;
   line-height: 1.6;
 }
 
-@media (max-width: 968px) {
+/* Responsive */
+@media (max-width: 768px) {
   .getStarted {
     padding: 4rem 1rem;
   }
 
-  .content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+  .container {
+    max-width: 100%;
   }
 
   .sectionTitle {
@@ -199,46 +267,39 @@
     font-size: 1.1rem;
   }
 
-  .qrCard,
-  .optionCard {
-    padding: 2rem;
+  .mainCard {
+    padding: 2rem 1.5rem;
   }
-}
 
-@media (max-width: 640px) {
+  .qrWrapper {
+    padding: 1.5rem;
+  }
+
+  .scanTitle {
+    font-size: 1.5rem;
+  }
+
+  .scanDescription {
+    font-size: 1rem;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
   .storeButtons {
     flex-direction: column;
+    max-width: 100%;
   }
 
   .urlBox {
     flex-direction: column;
     gap: 1rem;
+    max-width: 100%;
   }
 
   .copyButton {
     width: 100%;
   }
-}
-
-/* Confetti Animation */
-.confettiContainer {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.confetti {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  top: 50%;
-}
-
-.downloadButton {
-  position: relative;
-  overflow: visible;
 }

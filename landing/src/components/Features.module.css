@@ -34,15 +34,16 @@
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: 2px solid rgba(90, 79, 207, 0.2);
   border-radius: 20px;
   padding: 2.5rem;
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
   transform-style: preserve-3d;
+  box-shadow: 0 10px 40px rgba(90, 79, 207, 0.1);
 }
 
 .card::before {
@@ -54,8 +55,8 @@
   bottom: 0;
   background: linear-gradient(
     135deg,
-    rgba(90, 79, 207, 0.1) 0%,
-    transparent 100%
+    rgba(90, 79, 207, 0.15) 0%,
+    rgba(139, 92, 246, 0.1) 100%
   );
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -67,9 +68,10 @@
 }
 
 .card:hover {
-  border-color: rgba(90, 79, 207, 0.5);
-  box-shadow: 0 20px 60px rgba(90, 79, 207, 0.2),
-    inset 0 0 30px rgba(90, 79, 207, 0.05);
+  border-color: rgba(90, 79, 207, 0.6);
+  box-shadow: 0 20px 60px rgba(90, 79, 207, 0.25),
+    inset 0 0 30px rgba(90, 79, 207, 0.08);
+  transform: translateY(-5px);
 }
 
 .iconWrapper {
@@ -86,7 +88,6 @@
 
 .icon {
   font-size: 2rem;
-  filter: brightness(0) invert(1);
 }
 
 .cardTitle {
