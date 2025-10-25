@@ -1,0 +1,154 @@
+.howItWorks {
+  padding: 6rem 2rem;
+  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  color: #1a1a1a;
+  margin: 0 0 1rem 0;
+}
+
+.sectionSubtitle {
+  font-size: 1.25rem;
+  text-align: center;
+  color: #6b7280;
+  margin: 0 0 4rem 0;
+}
+
+.steps {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+.step:nth-child(1) {
+  animation-delay: 0s;
+}
+.step:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.step:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.stepNumber {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #8b5cf6 0%, #5a4fcf 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 8px 20px rgba(90, 79, 207, 0.3);
+  z-index: 2;
+  position: relative;
+}
+
+.stepContent {
+  text-align: center;
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  border: 2px solid #e5e7eb;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.step:hover .stepContent {
+  border-color: #5a4fcf;
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(90, 79, 207, 0.15);
+}
+
+.stepIcon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.stepTitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 1rem 0;
+}
+
+.stepDescription {
+  font-size: 1rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.connector {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #5a4fcf 0%, #8b5cf6 100%);
+  z-index: 1;
+  opacity: 0.3;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .howItWorks {
+    padding: 4rem 1rem;
+  }
+
+  .sectionTitle {
+    font-size: 2rem;
+  }
+
+  .sectionSubtitle {
+    font-size: 1.1rem;
+    margin-bottom: 3rem;
+  }
+
+  .steps {
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .connector {
+    display: none;
+  }
+
+  .stepContent {
+    padding: 1.5rem;
+  }
+}
