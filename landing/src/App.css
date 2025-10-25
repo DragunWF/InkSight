@@ -4,6 +4,9 @@
   --primary-color: #5a4fcf;
   --text-primary: #1a1a1a;
   --text-secondary: #6b7280;
+  --background: #ffffff;
+  --background-alt: #f8f9fa;
+  --border-color: #e5e7eb;
 }
 
 * {
@@ -24,8 +27,17 @@ body {
     sans-serif;
   line-height: 1.6;
   color: var(--text-primary);
-  background: #ffffff;
+  background: var(--background);
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
+  cursor: none; /* Hide default cursor for custom cursor */
+}
+
+/* Show default cursor on mobile */
+@media (hover: none) and (pointer: coarse) {
+  body {
+    cursor: auto;
+  }
 }
 
 #root {
@@ -36,6 +48,7 @@ body {
 .app {
   width: 100%;
   min-height: 100vh;
+  position: relative;
 }
 
 /* Smooth animations for all sections */
@@ -78,3 +91,14 @@ button:focus {
   background: var(--primary-color);
   color: white;
 }
+
+/* Smooth scroll snapping (optional) */
+/* 
+html {
+  scroll-snap-type: y proximity;
+}
+
+section {
+  scroll-snap-align: start;
+}
+*/

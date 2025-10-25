@@ -1,6 +1,14 @@
 .howItWorks {
   padding: 6rem 2rem;
-  background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(248, 249, 250, 0.7) 0%,
+    rgba(255, 255, 255, 0.5) 100%
+  );
+  backdrop-filter: blur(10px);
+  transition: background 0.3s ease;
+  position: relative;
+  z-index: 1;
 }
 
 .container {
@@ -12,14 +20,14 @@
   font-size: 2.5rem;
   font-weight: 700;
   text-align: center;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin: 0 0 1rem 0;
 }
 
 .sectionSubtitle {
   font-size: 1.25rem;
   text-align: center;
-  color: #6b7280;
+  color: var(--text-secondary);
   margin: 0 0 4rem 0;
 }
 
@@ -79,7 +87,7 @@
 }
 
 .step:hover .stepContent {
-  border-color: #5a4fcf;
+  border-color: var(--primary-color);
   transform: translateY(-4px);
   box-shadow: 0 12px 30px rgba(90, 79, 207, 0.15);
 }
@@ -92,13 +100,13 @@
 .stepTitle {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin: 0 0 1rem 0;
 }
 
 .stepDescription {
   font-size: 1rem;
-  color: #6b7280;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
 }

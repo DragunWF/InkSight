@@ -1,8 +1,16 @@
 .footer {
-  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  background: linear-gradient(
+    135deg,
+    rgba(17, 17, 35, 0.95) 0%,
+    rgba(26, 26, 46, 0.95) 50%,
+    rgba(35, 25, 50, 0.95) 100%
+  );
+  backdrop-filter: blur(10px);
   color: white;
   padding: 60px 20px 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(167, 139, 250, 0.2);
+  position: relative;
+  z-index: 1;
 }
 
 .container {
@@ -39,10 +47,11 @@
 .logoText {
   font-size: 1.75rem;
   font-weight: 700;
-  background: linear-gradient(135deg, var(--primary-color) 0%, #8b5cf6 100%);
+  background: linear-gradient(135deg, #a78bfa 0%, #c084fc 50%, #e879f9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: 0 0 30px rgba(167, 139, 250, 0.3);
 }
 
 .tagline {
@@ -82,7 +91,7 @@
 }
 
 .link:hover {
-  color: var(--primary-color);
+  color: #c084fc;
   transform: translateX(4px);
 }
 

@@ -1,0 +1,53 @@
+.progressBar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color) 0%, #8b5cf6 100%);
+  transform-origin: 0%;
+  z-index: 9999;
+  box-shadow: 0 0 10px rgba(90, 79, 207, 0.5);
+}
+
+.scrollButton {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color) 0%, #8b5cf6 100%);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 6px 25px rgba(90, 79, 207, 0.4);
+  transition: all 0.3s ease;
+}
+
+.scrollButton:hover {
+  box-shadow: 0 8px 35px rgba(90, 79, 207, 0.6);
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+@media (max-width: 640px) {
+  .scrollButton {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 50px;
+    height: 50px;
+  }
+
+  .icon {
+    width: 20px;
+    height: 20px;
+  }
+}
