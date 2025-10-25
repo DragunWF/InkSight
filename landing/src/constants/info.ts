@@ -14,8 +14,7 @@ export const LANDING_CONFIG = {
 
   links: {
     github: "https://github.com/DragunWF/InkSight",
-    apkDownload: "https://example.com/inksight.apk", // TODO: Update with actual APK URL
-    expoProject: "exp://192.168.1.1:8081", // TODO: Update with your Expo project URL
+    expoProject: "http://bit.ly/476HNcW",
     expoGoIOS: "https://apps.apple.com/app/expo-go/id982107779",
     expoGoAndroid:
       "https://play.google.com/store/apps/details?id=host.exp.exponent",
@@ -24,13 +23,13 @@ export const LANDING_CONFIG = {
   qrCode: {
     // This URL is used to generate the QR code
     // Update this with your actual Expo project URL from `npx expo start`
-    expoGoUrl: "exp://192.168.1.1:8081", // TODO: Update this
+    expoGoUrl: "http://bit.ly/476HNcW",
   },
 
   contact: {
-    email: "your.email@example.com", // TODO: Update with your email
-    name: "Your Name", // TODO: Update with your name
-    github: "DragunWF", // TODO: Update with your GitHub username
+    linkedin: "marc-plarisan",
+    name: "DragunWF",
+    github: "DragunWF",
   },
 
   features: [
@@ -89,7 +88,7 @@ export const LANDING_CONFIG = {
     "Expo",
     "TypeScript",
     "SQLite",
-    "Gemini AI",
+    "Gemini API",
     "OCR API",
   ],
 
