@@ -14,7 +14,8 @@ export const LANDING_CONFIG = {
 
   links: {
     github: "https://github.com/DragunWF/InkSight",
-    expoProject: "http://bit.ly/476HNcW",
+    expoProject:
+      "https://expo.dev/preview/update?message=refactor%28landingPage%29%3A+improve+hovering+effects&updateRuntimeVersion=1.0.0&createdAt=2025-10-25T05%3A03%3A47.210Z&slug=exp&projectId=749d68a1-d2b4-468b-853c-4e1022790dc9&group=0fdfd554-3945-408b-8910-76845ac18df8",
     expoGoIOS: "https://apps.apple.com/app/expo-go/id982107779",
     expoGoAndroid:
       "https://play.google.com/store/apps/details?id=host.exp.exponent",
@@ -23,7 +24,8 @@ export const LANDING_CONFIG = {
   qrCode: {
     // This URL is used to generate the QR code
     // Update this with your actual Expo project URL from `npx expo start`
-    expoGoUrl: "http://bit.ly/476HNcW",
+    expoGoUrl:
+      "https://expo.dev/preview/update?message=refactor%28landingPage%29%3A+improve+hovering+effects&updateRuntimeVersion=1.0.0&createdAt=2025-10-25T05%3A03%3A47.210Z&slug=exp&projectId=749d68a1-d2b4-468b-853c-4e1022790dc9&group=0fdfd554-3945-408b-8910-76845ac18df8",
   },
 
   contact: {
