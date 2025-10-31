@@ -299,6 +299,12 @@
     max-width: 100%;
   }
 
+  .url {
+    text-align: center;
+    width: 100%;
+    min-width: 0;
+  }
+
   .copyButton {
     width: 100%;
   }
